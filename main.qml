@@ -615,7 +615,7 @@ ApplicationWindow {
     width: rightPanelExpanded ? 1269 : 1269 - 300
     height: 800
     color: "#FFFFFF"
-    flags: Qt.FramelessWindowHint | Qt.WindowSystemMenuHint | Qt.Window | Qt.WindowMinimizeButtonHint
+    flags: Qt.WindowSystemMenuHint | Qt.Window | Qt.WindowMinimizeButtonHint | Qt.WindowCloseButtonHint | Qt.WindowTitleHint | Qt.WindowMaximizeButtonHint
     onWidthChanged: x -= 0
 
 
@@ -743,7 +743,6 @@ ApplicationWindow {
                 PropertyChanges { target: appWindow; width: 930; }
                 PropertyChanges { target: appWindow; height: 595; }
                 PropertyChanges { target: resizeArea; visible: false }
-                PropertyChanges { target: titleBar; maximizeButtonVisible: false }
                 PropertyChanges { target: frameArea; blocked: true }
                 PropertyChanges { target: titleBar; y: 0 }
                 PropertyChanges { target: titleBar; title: qsTr("Program setup wizard") + translationManager.emptyString }
@@ -757,7 +756,6 @@ ApplicationWindow {
                 PropertyChanges { target: appWindow; width: rightPanelExpanded ? 1269 : 1269 - 300; }
                 PropertyChanges { target: appWindow; height: 800; }
                 PropertyChanges { target: resizeArea; visible: true }
-                PropertyChanges { target: titleBar; maximizeButtonVisible: true }
                 PropertyChanges { target: frameArea; blocked: false }
                 PropertyChanges { target: titleBar; y: 0 }
                 PropertyChanges { target: titleBar; title: qsTr("Monero") + translationManager.emptyString }
@@ -832,11 +830,6 @@ ApplicationWindow {
                 target: appWindow
                 properties: "visibility"
                 value: Window.Windowed
-            }
-            PropertyAction {
-                target: titleBar
-                properties: "maximizeButtonVisible"
-                value: false
             }
             PropertyAction {
                 target: frameArea
@@ -925,11 +918,6 @@ ApplicationWindow {
                 target: frameArea
                 properties: "blocked"
                 value: false
-            }
-            PropertyAction {
-                target: titleBar
-                properties: "maximizeButtonVisible"
-                value: true
             }
         }
 
